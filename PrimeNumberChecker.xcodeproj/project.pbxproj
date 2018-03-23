@@ -15,6 +15,8 @@
 		62B42991206433290087C97C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62B4298F206433290087C97C /* LaunchScreen.storyboard */; };
 		62B4299C2064332A0087C97C /* PrimeNumberCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B4299B2064332A0087C97C /* PrimeNumberCheckerTests.swift */; };
 		62B429A72064332A0087C97C /* PrimeNumberCheckerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B429A62064332A0087C97C /* PrimeNumberCheckerUITests.swift */; };
+		62F2A96C2065968900640517 /* ButtonDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F2A96B2065968900640517 /* ButtonDesign.swift */; };
+		62F2A96E2065978700640517 /* LabelDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F2A96D2065978700640517 /* LabelDesign.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		62B429A22064332A0087C97C /* PrimeNumberCheckerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrimeNumberCheckerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62B429A62064332A0087C97C /* PrimeNumberCheckerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeNumberCheckerUITests.swift; sourceTree = "<group>"; };
 		62B429A82064332A0087C97C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62F2A96B2065968900640517 /* ButtonDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDesign.swift; sourceTree = "<group>"; };
+		62F2A96D2065978700640517 /* LabelDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDesign.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				62B4298F206433290087C97C /* LaunchScreen.storyboard */,
 				62B42992206433290087C97C /* Info.plist */,
 				62B4298A206433290087C97C /* PrimeNumberChecker.xcdatamodeld */,
+				62F2A96B2065968900640517 /* ButtonDesign.swift */,
+				62F2A96D2065978700640517 /* LabelDesign.swift */,
 			);
 			path = PrimeNumberChecker;
 			sourceTree = "<group>";
@@ -262,9 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62F2A96E2065978700640517 /* LabelDesign.swift in Sources */,
 				62B4298C206433290087C97C /* PrimeNumberChecker.xcdatamodeld in Sources */,
 				62B42986206433290087C97C /* ViewController.swift in Sources */,
 				62B42984206433290087C97C /* AppDelegate.swift in Sources */,
+				62F2A96C2065968900640517 /* ButtonDesign.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
