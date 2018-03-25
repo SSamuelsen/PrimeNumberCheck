@@ -11,18 +11,6 @@ import UIKit
 class ViewController: UIViewController {
 
     
-    //logical steps
-    //Create a simple app that allows the user to enter a number, and then press a button to learn if that number is prime.  The app’s main activity should have the following:
-    //A field for the user to enter a number.
-    //A button for the user to press.
-    //An output field that displays whether or not the entered number is a prime number.
-    //The app should not crash if the user enters something other than a number.  It should behave gracefully, perhaps by preventing the user from entering non-numeric characters, or showing an error message if it couldn’t understand the input.
-    
-    //For example, if the user enters a 2, 3, 5, or 7, the app should display “Yes” or “True” or something similar.  If the user enters a 4, 9, or 15, the app should display “No” or “False” or something similar.
-    
-    
-    
-    
     @IBOutlet weak var numberInputField: UITextField!
     @IBOutlet weak var primeCheckButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
@@ -57,9 +45,9 @@ class ViewController: UIViewController {
    
     
     
-    func checkIfNumber() {
+    func checkIfNumber() {                  //function used to check if the user input is a valid integer
         
-        if (numberInputField.text?.isEmpty != true) {
+        if (numberInputField.text?.isEmpty != true) {       //check to see if the input field is not empty
         
         guard let number = numberInputField.text else {return}      //assign var to the value of numberInputField if it is not null
         
@@ -88,8 +76,8 @@ class ViewController: UIViewController {
                     
                     if (element != nil) {
                         
-                        convertToInt = Int(String(element))!
-                        intArray.append(convertToInt)
+                        convertToInt = Int(String(element))!        //converts the element to an int
+                        intArray.append(convertToInt)               //adds the element to a new array
                         arrayOfBadChars.text = ""
                         arrayOfBadChars.isHidden = true
                         
@@ -103,7 +91,7 @@ class ViewController: UIViewController {
                     
                 else  {
                     
-                    invalidated = true
+                    invalidated = true                          //stops the loop
                     errorLabel.text = "Please enter an integer"
                     errorLabel.isHidden = false                         //stops the loop
                     badArray.append(String(element))
