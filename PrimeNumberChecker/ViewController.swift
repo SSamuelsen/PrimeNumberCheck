@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+
+
+final class ViewController: UIViewController {
 
     
     @IBOutlet weak var numberInputField: UITextField!
@@ -25,8 +27,8 @@ class ViewController: UIViewController {
     
     
     var joinedSumString = ""
-    var checkedNumberString: String = ""            //used to story the String array
-    var checkedNumberInt: Int = 0                   //used to convert the string array to an Int
+    //var checkedNumberString: String = ""            //used to story the String array
+    //var checkedNumberInt: Int = 0                   //used to convert the string array to an Int
     var isPrime: Bool = false                   //true is prime, false if not prime
     
     
@@ -36,20 +38,24 @@ class ViewController: UIViewController {
         numberInputField.keyboardType = UIKeyboardType.numberPad        //restricts it so that only number pad will show up
         
         
-        
-        
-        
-        
     }
 
-   
     
     
-    func checkIfNumber() {                  //function used to check if the user input is a valid integer
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+     
+    }
+    
+    
+    
+    
+    func checkIfNumber() throws -> Int {                  //function used to check if the user input is a valid integer //returns Int
         
         if (numberInputField.text?.isEmpty != true) {       //check to see if the input field is not empty
         
-        guard let number = numberInputField.text else {return}      //assign var to the value of numberInputField if it is not null
+        guard let number = numberInputField.text else {return 0}      //assign var to the value of numberInputField if it is not null
         
         let newNumArray = number.flatMap{(String($0))}      //this turns the value that is in the text into an array made up of all the individuals letters and or digits
         
@@ -59,6 +65,8 @@ class ViewController: UIViewController {
         var badArray = [String]()           //holds the illegal characters
         
         
+            
+                
         
         newNumArray.forEach({element in     //forEach function loops through each element in the new array created by the flatMap method
             
@@ -67,22 +75,22 @@ class ViewController: UIViewController {
                 
                 let char:String = String(element)       //need to convert to a string for it to work
                 
-                var convertToInt: Int
+                //var convertToInt: Int
                 
                 
                 if (numberSet.contains(char)){   //checks to see if the numberSet Array contains the element
                     
                     errorLabel.isHidden = true
                     
-                    if (element != nil) {
+                    
                         
-                        convertToInt = Int(String(element))!        //converts the element to an int
-                        intArray.append(convertToInt)               //adds the element to a new array
-                        arrayOfBadChars.text = ""
-                        arrayOfBadChars.isHidden = true
+                    guard let convertToInt = Int(String(element)) else {return}        //converts the element to an int            //avoids force unwrap
+                    intArray.append(convertToInt)               //adds the element to a new array
+                    arrayOfBadChars.text = ""
+                    arrayOfBadChars.isHidden = true
                         
                         
-                    }
+                   
                     
                     
                     
@@ -125,7 +133,8 @@ class ViewController: UIViewController {
             
             
             
-        })//end of forEach loop
+        })
+            //end of forEach loop
         
         
         //code to test of if the number is prime
@@ -135,21 +144,24 @@ class ViewController: UIViewController {
         
         let sumString = intArray.map {String($0) }              //converts the array to an array of strings
         
-        
-        
+                
         joinedSumString = sumString.joined()        //set variable to a joined string array connecting all the numbers together into one value
         
         
-        checkedNumberString = joinedSumString
+        //checkedNumberString = joinedSumString
         
-        if checkedNumberString.isEmpty != true {
+        if joinedSumString.isEmpty != true {
         
-            checkedNumberInt = (Int(checkedNumberString))!          //this is the value that will then be checked to see if it is prime
-        
+            guard let checkedNumberInt = (Int(joinedSumString)) else {return 0}          //this is the value that will then be checked to see if it is prime
+            return checkedNumberInt             //returns the integer
         }
         
+            
+        
+            
         
         }
+        return 0;
         
     }//end of function
     
@@ -157,7 +169,7 @@ class ViewController: UIViewController {
     
     func checkIfPrime(number: Int) {                //function to check whether number is prime or not
         
-        
+                                                                                        //$0 first parameter passed into the closure
         isPrime = ((number > 1) && (!(2..<number).contains {number % $0 == 0}))       //this checks to see if number is greater than 1 because 0 and 1 are both not prime
                                                                                 //then checks to see if each number in the range of numbers leaves remainder after being divided by each number in the range defined
         
@@ -181,7 +193,7 @@ class ViewController: UIViewController {
         
         
         
-    }
+    }//end of check if Prime Function
     
    
     
@@ -200,8 +212,9 @@ class ViewController: UIViewController {
     @IBAction func primeCheckButtonPressed(_ sender: Any) {
         
         
-       checkIfNumber()          //calls function to check if the input is a valid number
-       checkIfPrime(number: checkedNumberInt)           //calls function to see if Int is a prime number
+        guard let checkedNumber = try? checkIfNumber() else {return}
+        
+       checkIfPrime(number: checkedNumber)
         
         
         
